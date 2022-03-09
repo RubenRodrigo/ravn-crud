@@ -14,3 +14,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.link__active{
+  background: rgba(173, 104, 74, 0.1);
+  background: linear-gradient(270deg, rgba(173, 104, 74, 0.1) 0%, rgba(255, 255, 255, 0) 100%, rgb(255, 255, 255,0) 100%);
+}
+/* Ripple effect */
+.ripple__secondary {
+  background-color: #f87171;
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple__secondary:hover {
+  background: #fa8686 radial-gradient(circle, transparent 1%, #fa8686 1%) center/15000%;
+}
+.ripple__secondary:active {
+  background-color: #fababa;
+  background-size: 100%;
+  transition: background 0s;
+}
