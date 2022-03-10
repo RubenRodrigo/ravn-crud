@@ -1,0 +1,1 @@
+export type StatusTasks<T> = Record<string, T[]>

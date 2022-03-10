@@ -1,26 +1,27 @@
-import React from 'react'
 import { MdComment } from 'react-icons/md';
 import { RiNodeTree } from 'react-icons/ri';
+import { Task } from '../../interfaces/Task';
+
+import profile from '../../assets/images/profile.jpg'
 
 interface Props {
-	profile: string;
-	pointEstimate: string;
+	task: Task;
 }
 
-export const CardFooter = ({ pointEstimate, profile }: Props) => {
+export const CardFooter = ({ task }: Props) => {
 	return (
 		<div className='flex justify-between'>
 			<div className='flex-initial'>
 				<img
 					className="rounded-full h-10 w-10 object-cover"
-					src={profile}
+					src={task.assignee?.avatar ?? profile}
 					alt="Profile"
 				/>
 			</div>
 			<div className='flex-initial flex gap-4'>
 				<div className='flex gap-2'>
 					<span className='self-center' >
-						{pointEstimate}
+						{task.pointEstimate}
 					</span>
 					<span className='self-center' >
 						<RiNodeTree />
@@ -28,7 +29,7 @@ export const CardFooter = ({ pointEstimate, profile }: Props) => {
 				</div>
 				<div className='flex gap-2'>
 					<span className='self-center' >
-						{pointEstimate}
+						{task.pointEstimate}
 					</span>
 					<span className='self-center' >
 						<MdComment />

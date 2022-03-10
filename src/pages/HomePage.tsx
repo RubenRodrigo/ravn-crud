@@ -1,55 +1,61 @@
+import { useEffect, useState } from "react"
+import toast from 'react-hot-toast';
+
 import { Task } from "../interfaces/Task"
-import { ActionButton } from "../components/Buttons/ActionButton"
-import { Card } from "../components/Card/Card"
+import { getTask } from "../services/task"
+import { BoardContainer } from "../components/Board/BoardContainer"
 import { HeaderTasks } from "../components/HeaderTasks/HeaderTasks"
+import { ToastContent } from "../components/Toast/ToastContent";
 
-import taskImage from '../assets/images/task-image.jpg'
+const INITIAL_STATE: Task[] = [
+	{
+		id: "1241",
+		name: "Slack",
+		tags: ['IOS', 'ANDROID'],
+		status: "Working",
+		position: 1,
+		dueDate: new Date('2022-03-16T04:47:19.889Z'),
+		pointEstimate: "0",
+		createdAt: new Date('2022-03-08T16:04:47.453Z')
+	}
 
-const INITAL_STATE: Task = {
-	id: "1241",
-	name: "Slack",
-	tags: ['IOS APP', 'ANDROID'],
-	status: "Working",
-	position: 1,
-	dueDate: new Date('2022-03-16T04:47:19.889Z'),
-	pointEstimate: "0",
-	createdAt: new Date('2022-03-08T16:04:47.453Z')
-}
-
+]
 export const HomePage = () => {
+
+	const [tasks, setTasks] = useState<Task[]>(INITIAL_STATE)
+	const [error, setError] = useState<string>()
+	const [loading, setLoading] = useState<boolean>(false)
+
+	const getData = async () => {
+		setLoading(true)
+		try {
+			const res = await getTask()
+			const data = res.data
+			setTasks(data)
+		} catch (error) {
+			setError('We can\'t load the tasks.')
+			toast.custom(
+				<ToastContent status="error" msg="We can\'t load the tasks." />
+			)
+		} finally {
+			setLoading(false)
+		}
+	}
+
+	useEffect(() => {
+		getData()
+	}, [])
+
 	return (
-		<div className="text-white h-full flex flex-col w-full">
+		<div className="text-white h-full flex flex-col w-full ">
 			<HeaderTasks />
-			<div className="grid grid-cols-3 gap-4 sticky top-0 bg-neutral-800 py-2 z-10 ">
-				<div className="flex">
-					<h1 className="flex-1 self-center font-semibold text-xl">Working (03)</h1>
-					<ActionButton />
-				</div>
-				<div className="flex">
-					<h1 className="flex-1 self-center font-semibold text-xl">Working (03)</h1>
-					<ActionButton />
-				</div>
-				<div className="flex">
-					<h1 className="flex-1 self-center font-semibold text-xl">Working (03)</h1>
-					<ActionButton />
-				</div>
-			</div>
 			<div className="flex-1">
-				<div
-					className="grid grid-cols-3 gap-4 h-full grid-flow-col w-full"
-				>
-					<div>
-						<Card task={INITAL_STATE} imageURL={taskImage} />
-						<Card task={INITAL_STATE} />
-					</div>
-					<div>
-						<Card task={INITAL_STATE} />
-					</div>
-					<div>
-						<Card task={INITAL_STATE} />
-						<Card task={INITAL_STATE} />
-					</div>
-				</div>
+				{error
+					?
+					<div>Something went wrong. Maybe is an 500 server error.</div>
+					:
+					<BoardContainer loading={loading} tasks={tasks} />
+				}
 			</div>
 		</div>
 	)

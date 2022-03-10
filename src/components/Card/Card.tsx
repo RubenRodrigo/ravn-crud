@@ -1,5 +1,4 @@
 import { Task } from '../../interfaces/Task'
-import profile from '../../assets/images/profile.jpg'
 import { CardImage } from './CardImage';
 import { CardHead } from './CardHead';
 import { CardBody } from './CardBody';
@@ -12,12 +11,12 @@ interface Props {
 
 export const Card = ({ task, imageURL }: Props) => {
 	return (
-		<div className='my-4 bg-primary p-4 rounded-lg' style={{ minWidth: '250px' }}>
+		<div className='my-4 bg-primary p-4 rounded-lg'>
 			<div className='flex flex-col gap-5'>
 				{imageURL && <CardImage imageURL={imageURL} name={task.name} />}
 				<CardHead name={task.name} />
-				<CardBody tags={task.tags} />
-				<CardFooter pointEstimate={task.pointEstimate} profile={profile} />
+				<CardBody task={task} />
+				<CardFooter task={task} />
 			</div>
 		</div>
 	)
