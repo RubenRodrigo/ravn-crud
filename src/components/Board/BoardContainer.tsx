@@ -4,7 +4,6 @@ import { StatusTasks } from '../../interfaces/GroupBy'
 import { Task } from '../../interfaces/Task'
 import { BoardBody } from './BoardBody'
 import { BoardHeader } from './BoardHeader'
-import { CgSpinner } from "react-icons/cg";
 import { TaskContext } from '../../context/TaskContext'
 import { Spinner } from '../Spinner/Spinner'
 

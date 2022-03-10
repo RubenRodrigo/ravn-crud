@@ -1,3 +1,4 @@
+import { StatusSelect, TagsSelect } from "./Selects";
 import { User } from "./User";
 
 export interface TaskBase {
@@ -18,4 +19,14 @@ export interface Task extends TaskBase {
 }
 
 export type Tags = "ANDROID" | "IOS" | "NODE_JS" | "RAILS" | "REACT"
-export type Status = "BACKLOG" | "TODO" | "IN_PROGRESS" | "CANCELLED" 
+export type Status = "BACKLOG" | "TODO" | "IN_PROGRESS" | "CANCELLED"
+
+export interface TaskFormValues {
+	name: string;
+	tags: TagsSelect[];
+	status: StatusSelect;
+	pointEstimate: string;
+	dueDate: string;
+	dueTime: string;
+	assigneeId: string;
+}

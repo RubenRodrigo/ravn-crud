@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Task } from '../../interfaces/Task';
 import { ActionButton } from '../Buttons/ActionButton';
-import { CreateTaskForm } from '../Forms/CreateTaskForm';
 import { DeleteTaskForm } from '../Forms/DeleteTaskForm';
+import { UpdateTaskForm } from '../Forms/UpdateTaskForm';
 import { CustomMenu } from '../Menu/CustomMenu';
 import { Modal } from '../Modal/Modal';
 import { CardMenu } from './CardMenu';
@@ -51,7 +51,7 @@ export const CardHead = ({ task }: Props) => {
 			>
 				{
 					({ onClose }) => (
-						<CreateTaskForm onClose={onClose} />
+						<UpdateTaskForm task={task} onClose={onClose} />
 					)
 				}
 			</Modal>
