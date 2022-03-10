@@ -1,12 +1,13 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { User } from '../../interfaces/User'
+import { UserContext } from '../../context/UserContext';
 
 interface Props {
-	user: User;
 	profileIMG?: JSX.Element;
 }
 
-export const ProfileMenu = ({ user, profileIMG }: Props) => {
+export const ProfileMenu = ({ profileIMG }: Props) => {
+	const { user } = useContext(UserContext)
 	return (
 		<div className="px-1 py-1">
 			<div className='flex gap-4'>

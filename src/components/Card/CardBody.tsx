@@ -1,10 +1,13 @@
+import { useState } from "react"
 import { MdAlarm, MdAlarmOn, MdPause } from "react-icons/md"
+import { getDelayDate } from "../../helpers/dates"
+import { Task } from "../../interfaces/Task"
 
 interface Props {
-	tags: string[]
+	task: Task
 }
 
-export const CardBody = ({ tags }: Props) => {
+export const CardBody = ({ task }: Props) => {
 	return (
 		<>
 			<div className='flex justify-between'>
@@ -30,13 +33,13 @@ export const CardBody = ({ tags }: Props) => {
 						<MdAlarm />
 					</span>
 					<span className='self-center'>
-						Today
+						<CardDueDate dueDate={task.dueDate} />
 					</span>
 				</div>
 			</div>
 			<div className='flex gap-4'>
 				{
-					tags.map(tag => (
+					task.tags.map(tag => (
 						<span
 							key={tag}
 							className='py-1.5 px-4  text-green-200 bg-green-500 bg-opacity-10 rounded-md text-xs'
@@ -48,4 +51,31 @@ export const CardBody = ({ tags }: Props) => {
 			</div>
 		</>
 	)
+}
+interface CardDueDateProps {
+	dueDate: Date
+}
+const CardDueDate = ({ dueDate }: CardDueDateProps) => {
+	const [delayDate] = useState(getDelayDate(dueDate))
+
+	if (delayDate >= 0) {
+		return (
+			<span className="text-green-300">
+				{delayDate === 0 ? 'Today' : `In ${delayDate} days.`}
+			</span>
+		)
+	}
+	if (delayDate >= -2) {
+		return (
+			<span className="text-yellow-200">
+				{delayDate} days ago.
+			</span>
+		)
+	}
+	return (
+		<span className="text-secondary">
+			{delayDate} days ago.
+		</span>
+	)
+
 }

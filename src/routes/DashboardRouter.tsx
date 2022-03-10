@@ -1,8 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Layout } from '../components/Layout'
-import { HomePage } from '../pages/HomePage'
+
+import { HomePage } from '../pages/Home/HomePage'
 import { SettingsPage } from '../pages/SettingsPage'
 import { TaskPage } from '../pages/TaskPage'
+
+import { Layout } from '../components/Layout'
 
 export const DashboardRouter = () => {
 	return (
