@@ -12,3 +12,10 @@ interface CreateTaskProps {
 export const createTask = async ({ task }: CreateTaskProps) => {
 	return await axiosInstance().post('/tasks', { ...task })
 }
+
+interface DeleteTaskProps {
+	id: string
+}
+export const deleteTask = async ({ id }: DeleteTaskProps) => {
+	return await axiosInstance().delete(`/tasks/${id}`)
+}

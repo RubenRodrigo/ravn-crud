@@ -9,7 +9,7 @@ import { TaskContext } from "../../context/TaskContext";
 
 export const HomePageContainer = () => {
 
-	const { taskLoaded } = useContext(TaskContext)
+	const { taskLoad } = useContext(TaskContext)
 	const [error, setError] = useState<string>()
 	const [loading, setLoading] = useState<boolean>(false)
 
@@ -19,7 +19,7 @@ export const HomePageContainer = () => {
 		try {
 			const res = await getTask()
 			const data = res.data
-			taskLoaded(data)
+			taskLoad(data)
 		} catch (error) {
 			setError('We can\'t load the tasks.')
 			toast.custom(
@@ -28,7 +28,7 @@ export const HomePageContainer = () => {
 		} finally {
 			setLoading(false)
 		}
-	}, [taskLoaded])
+	}, [taskLoad])
 
 	useEffect(() => {
 		getData()

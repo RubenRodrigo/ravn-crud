@@ -18,8 +18,16 @@ export const TaskProvider = ({ children, INITIAL_STATE }: Props) => {
 		dispatch({ type: 'taskAdd', payload: newTask })
 	}
 
-	const taskLoaded = (tasks: Task[]) => {
-		dispatch({ type: 'taskLoaded', payload: tasks })
+	const taskLoad = (tasks: Task[]) => {
+		dispatch({ type: 'taskLoad', payload: tasks })
+	}
+
+	const taskUpdate = (task: Task) => {
+		dispatch({ type: 'taskUpdate', payload: task })
+	}
+
+	const taskDelete = (id: string) => {
+		dispatch({ type: 'taskDelete', payload: id })
 	}
 
 	return (
@@ -27,7 +35,9 @@ export const TaskProvider = ({ children, INITIAL_STATE }: Props) => {
 			value={{
 				taskState,
 				taskAdd,
-				taskLoaded
+				taskLoad,
+				taskUpdate,
+				taskDelete
 			}}
 		>
 			<div>{children}</div>

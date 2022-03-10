@@ -10,26 +10,29 @@ interface ChildrenProps {
 }
 
 interface Props {
-	children?: (props: ChildrenProps) => JSX.Element
-	openButton?: (open: OpenModal) => JSX.Element
-	className: string
+	children?: (props: ChildrenProps) => JSX.Element;
+	openButton?: (open: OpenModal) => JSX.Element;
+	className: string;
+	OnIsOpen?: boolean
+	onCloseModal?: () => void
+	onOpenModal?: () => void
 }
 
-export const Modal = ({ children, openButton, className }: Props) => {
-	let [isOpen, setIsOpen] = useState(false)
+export const Modal = ({ children, openButton, className, OnIsOpen, onCloseModal, onOpenModal }: Props) => {
+	const [isOpen, setIsOpen] = useState(false)
 
 	function closeModal() {
-		setIsOpen(false)
+		onCloseModal ? onCloseModal() : setIsOpen(false)
 	}
 
 	function openModal() {
-		setIsOpen(true)
+		onOpenModal ? onOpenModal() : setIsOpen(true)
 	}
 
 	return (
 		<>
 			{openButton && openButton(openModal)}
-			<Transition appear show={isOpen} as={Fragment}>
+			<Transition appear show={OnIsOpen ? OnIsOpen : isOpen} as={Fragment}>
 				<Dialog
 					as="div"
 					className="fixed inset-0 z-30 overflow-y-auto"
@@ -65,7 +68,12 @@ export const Modal = ({ children, openButton, className }: Props) => {
 							leaveTo="opacity-0 scale-95"
 						>
 							<div className={`inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl rounded-lg ${className}`}>
-								{children && children({ onOpen: openModal, onClose: closeModal })}
+								{children &&
+									children({
+										onOpen: openModal,
+										onClose: closeModal,
+									})
+								}
 							</div>
 						</Transition.Child>
 					</div>

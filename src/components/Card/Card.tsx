@@ -14,7 +14,7 @@ export const Card = ({ task, imageURL }: Props) => {
 		<div className='my-4 bg-primary p-4 rounded-lg'>
 			<div className='flex flex-col gap-5'>
 				{imageURL && <CardImage imageURL={imageURL} name={task.name} />}
-				<CardHead name={task.name} />
+				<CardHead task={task} />
 				<CardBody task={task} />
 				<CardFooter task={task} />
 			</div>

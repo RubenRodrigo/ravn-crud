@@ -8,9 +8,9 @@ interface Props {
 export const ActionButton = ({ children, className }: Props) => {
 	return (
 		<>
-			<button className={`flex-initial ${className}`}>
+			<div className={`flex-initial ${className}`}>
 				<MdMoreHoriz className='w-6 h-6' />
-			</button>
+			</div>
 			{children}
 		</>
 	)
