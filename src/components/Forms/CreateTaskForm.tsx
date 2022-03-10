@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 
 import toast from 'react-hot-toast';
 
-import { Tags, TaskBase } from '../../interfaces/Task'
+import { Tags, Task, TaskBase } from '../../interfaces/Task'
 import { createTask } from '../../services/task'
 import { ToastContent } from '../Toast/ToastContent';
 import { MultiSelectField } from './MultiSelectField';
@@ -11,6 +11,8 @@ import { TextField } from './TextField';
 import { SelectField } from './SelectField';
 import { StatusSelect, TagsSelect } from '../../interfaces/Selects';
 import { getDateTime } from '../../helpers/dates';
+import { TaskContext } from '../../context/TaskContext';
+import { useContext } from 'react';
 
 
 
@@ -35,15 +37,15 @@ interface Props {
 
 export const CreateTaskForm = ({ onClose }: Props) => {
 
+	const { taskAdd } = useContext(TaskContext)
 	const createTaskAction = async (task: TaskBase) => {
 		try {
 			const res = await createTask({ task })
-			console.log(res);
 			if (res.status === 201) {
 				const data = res.data
-				console.log(data);
+				taskAdd(data)
 				toast.custom(
-					<ToastContent status="error" msg="We can\'t load the tasks." />
+					<ToastContent status="success" msg="The task was created successfully." />
 				)
 			}
 

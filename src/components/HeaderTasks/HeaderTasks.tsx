@@ -1,8 +1,13 @@
 import { MdAdd, MdOutlineDashboard, MdOutlineList } from "react-icons/md"
+import { Task } from "../../interfaces/Task"
 import { CreateTaskForm } from "../Forms/CreateTaskForm"
 import { Modal } from "../Modal/Modal"
 
-export const HeaderTasks = () => {
+interface Props {
+	addTask?: (newTask: Task) => void
+}
+
+export const HeaderTasks = ({ addTask }: Props) => {
 	return (
 		<div className="flex justify-between text-xl my-3">
 			<div className="flex bg-neutral-600 bg-opacity-40 rounded-lg">

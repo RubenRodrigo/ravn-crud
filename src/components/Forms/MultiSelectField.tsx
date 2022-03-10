@@ -1,5 +1,4 @@
 import { ErrorMessage, useField } from 'formik';
-import React from 'react';
 
 import Select, { MultiValue, StylesConfig } from 'react-select';
 import { Tags } from '../../interfaces/Task';
@@ -12,7 +11,7 @@ interface Props {
 
 export const MultiSelectField = ({ label, ...props }: Props) => {
 
-	const [{ onChange, ...field }, meta, helpers] = useField(props)
+	const [{ onChange, ...field }, _, helpers] = useField(props)
 
 	const handleChange = (newValue: MultiValue<Tags>) => {
 		helpers.setValue(newValue)

@@ -9,7 +9,7 @@ interface Props {
 
 export const SelectField = ({ label, ...props }: Props) => {
 
-	const [{ onChange, ...field }, meta, helpers] = useField(props)
+	const [{ onChange, ...field }, _, helpers] = useField(props)
 
 	const handleChange = (newValue: any) => {
 		helpers.setValue(newValue)

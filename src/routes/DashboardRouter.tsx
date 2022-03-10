@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { HomePage } from '../pages/HomePage'
+import { HomePage } from '../pages/Home/HomePage'
 import { SettingsPage } from '../pages/SettingsPage'
 import { TaskPage } from '../pages/TaskPage'
 
