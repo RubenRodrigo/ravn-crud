@@ -4,8 +4,8 @@ import { StatusTasks } from '../../interfaces/GroupBy'
 import { Task } from '../../interfaces/Task'
 import { BoardBody } from './BoardBody'
 import { BoardHeader } from './BoardHeader'
-import { CgSpinner } from "react-icons/cg";
 import { TaskContext } from '../../context/TaskContext'
+import { Spinner } from '../Spinner/Spinner'
 
 interface Props {
 	loading: boolean;
@@ -23,9 +23,7 @@ export const BoardContainer = ({ loading }: Props) => {
 		<>
 			{loading
 				?
-				<div className='w-full flex justify-center'>
-					<CgSpinner className='animate-spin h-10 w-10 mr-3' />
-				</div>
+				<Spinner />
 				:
 				<>
 					<BoardHeader statusTaskKeys={Object.keys(statusTasks)} statusTasks={statusTasks} />
