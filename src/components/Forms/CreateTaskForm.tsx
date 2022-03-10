@@ -12,7 +12,8 @@ import { SelectField } from './SelectField';
 import { StatusSelect, TagsSelect } from '../../interfaces/Selects';
 import { getDateTime } from '../../helpers/dates';
 import { TaskContext } from '../../context/TaskContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { Spinner } from '../Spinner/Spinner';
 
 
 
@@ -37,11 +38,15 @@ interface Props {
 
 export const CreateTaskForm = ({ onClose }: Props) => {
 
+	const [loading, setLoading] = useState(false)
 	const { taskAdd } = useContext(TaskContext)
+
 	const createTaskAction = async (task: TaskBase) => {
+		setLoading(true)
 		try {
 			const res = await createTask({ task })
 			if (res.status === 201) {
+				setLoading(false)
 				const data = res.data
 				taskAdd(data)
 				toast.custom(
@@ -53,6 +58,8 @@ export const CreateTaskForm = ({ onClose }: Props) => {
 			toast.custom(
 				<ToastContent status="error" msg="We can\'t load the tasks." />
 			)
+		} finally {
+			onClose();
 		}
 	}
 
@@ -99,13 +106,18 @@ export const CreateTaskForm = ({ onClose }: Props) => {
 				const tagsValues = values.tags.map(tag => tag.name) as Tags[]
 				const { dueTime, ...newValues } = values
 				createTaskAction({ ...newValues, tags: tagsValues, status: newValues.status.name, dueDate: datetime })
-				onClose();
 			}}
 		>
 			{
 				(forms) => (
 					<Form autoComplete='off'>
-						<div className="text-white">
+						<div className="text-white p-6">
+							{
+								loading &&
+								<div className='absolute w-full top-0 left-0 bottom-0 right-0 bg-primary bg-opacity-50'>
+									<Spinner wd={20} hg={20} />
+								</div>
+							}
 							<h3
 								className="text-2xl font-bold leading-6 mb-4"
 							>
