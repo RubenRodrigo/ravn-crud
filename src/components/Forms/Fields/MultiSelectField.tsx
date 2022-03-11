@@ -21,6 +21,8 @@ export const MultiSelectField = ({ label, ...props }: Props) => {
 		<div className="w-full mb-6">
 			<Select
 				isMulti
+				menuPortalTarget={document.querySelector('body')}
+				hideSelectedOptions={false}
 				onChange={handleChange}
 				styles={selectStyles}
 				{...props}
@@ -33,6 +35,14 @@ export const MultiSelectField = ({ label, ...props }: Props) => {
 };
 
 const selectStyles: StylesConfig = {
+	menuPortal: (styles) => ({
+		...styles,
+		zIndex: 1000
+	}),
+	menu: (styles) => ({
+		...styles,
+		zIndex: 1000
+	}),
 	control: (styles) => (
 		{
 			...styles,
@@ -48,6 +58,7 @@ const selectStyles: StylesConfig = {
 		{
 			...styles,
 			backgroundColor: 'rgb(38 38 38)',
+			maxHeight: '170px'
 		}
 	),
 	option: (styles, { isDisabled, isFocused, isSelected }) => {

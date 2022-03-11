@@ -69,7 +69,7 @@ const selectStyles: StylesConfig = {
 		{
 			...styles,
 			backgroundColor: 'rgb(38 38 38)',
-			maxHeight: '150px'
+			maxHeight: '170px'
 		}
 	),
 	option: (styles, { isDisabled, isFocused, isSelected }) => (
