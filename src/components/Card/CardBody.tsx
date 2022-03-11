@@ -1,4 +1,4 @@
-import { MdAlarm, MdAlarmOn, MdPause } from "react-icons/md"
+import { MdAlarmOn, MdPause } from "react-icons/md"
 import { Task } from "../../interfaces/Task"
 import { CardDueDate } from "./CardDueDate"
 import { CardTag } from "./CardTag"

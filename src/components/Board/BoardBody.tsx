@@ -14,7 +14,7 @@ export const BoardBody = ({ statusTasks, statusTaskKeys }: Props) => {
 	const gridContainerRef = useGridCols(statusTaskKeys.length)
 	return (
 		<div
-			className={`grid gap-4 h-full grid-flow-col justify-between overflow-x-scroll`}
+			className={`grid gap-4 h-full grid-flow-col justify-between overflow-x-auto`}
 			ref={gridContainerRef}
 		>
 			{statusTaskKeys.map(key => (

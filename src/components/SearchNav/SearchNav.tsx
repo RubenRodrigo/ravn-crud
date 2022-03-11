@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
+import { IoMdCloseCircle } from "react-icons/io";
 import { getSearchQuery } from "../../helpers/query";
 import { useDebounce } from "../../hooks/useDebounce";
 import { Task } from "../../interfaces/Task";
@@ -26,7 +27,7 @@ export const SearchNav = () => {
 	// Effect for API call
 	useEffect(
 		() => {
-			if (debouncedSearchTerm && debouncedSearchTerm.length >= 3) {
+			if (debouncedSearchTerm) {
 				setIsSearching(true);
 				searchTasksAction(debouncedSearchTerm).then((results) => {
 					setIsSearching(false);
@@ -54,6 +55,15 @@ export const SearchNav = () => {
 						className='bg-transparent w-full focus:outline-none'
 					/>
 				</div>
+				{
+					debouncedSearchTerm &&
+					<button
+						onClick={() => setSearchTerm('')}
+						className="flex-initial self-center flex"
+					>
+						<IoMdCloseCircle />
+					</button>
+				}
 				<div className="flex-initial self-center flex">
 					<SearchFilter />
 				</div>
@@ -64,9 +74,19 @@ export const SearchNav = () => {
 						<SearchNavSkeleton />
 					</div>
 				}
-				{results.map(result => (
-					<ListTaskItem key={result.id} task={result} />
-				))}
+				{
+					results.map(result => (
+						<ListTaskItem key={result.id} task={result} />
+					))
+				}
+				{
+					debouncedSearchTerm && results.length <= 0 &&
+					<div className="p-2">
+						<h3 className="text-center text-2xl">
+							Not Found
+						</h3>
+					</div>
+				}
 			</div >
 		</>
 	)

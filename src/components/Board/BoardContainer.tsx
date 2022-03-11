@@ -3,7 +3,6 @@ import { groupBy } from '../../helpers/groupBy'
 import { StatusTasks } from '../../interfaces/GroupBy'
 import { Task } from '../../interfaces/Task'
 import { BoardBody } from './BoardBody'
-import { BoardHeader } from './BoardHeader'
 import { TaskContext } from '../../context/TaskContext'
 import { Spinner } from '../Spinner/Spinner'
 
