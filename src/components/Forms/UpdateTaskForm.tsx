@@ -2,10 +2,10 @@ import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { TaskContext } from '../../context/TaskContext';
-import { status, tags } from '../../helpers/data';
+import { point, status, tags } from '../../helpers/data';
 import { getDateTime } from '../../helpers/dates';
-import { StatusSelect, TagsSelect } from '../../interfaces/Selects';
-import { Status, Tags, Task, TaskBase } from '../../interfaces/Task'
+import { PointEstimateSelect, StatusSelect, TagsSelect } from '../../interfaces/Selects';
+import { PointEstimate, Status, Tags, Task, TaskBase } from '../../interfaces/Task'
 import { updateTask } from '../../services/task'
 
 import { ToastContent } from '../Toast/ToastContent';
@@ -51,10 +51,10 @@ export const UpdateTaskForm = ({ onClose, task }: Props) => {
 				name: task.name,
 				tags: getTags(task.tags),
 				status: getStatus(task.status as Status),
-				pointEstimate: task.pointEstimate,
+				pointEstimate: getPointStimate(task.pointEstimate),
 				dueDate: getDateTime(task.dueDate).today,
 				dueTime: getDateTime(task.dueDate).displayTime,
-				assigneeId: task.assignee?.id as string
+				assigneeId: task.assignee ?? null
 			}}
 		/>
 	)
@@ -65,6 +65,10 @@ const getTags = (taskTags: Tags[]): TagsSelect[] => {
 	return taskTags.map(tag => tags.find(e => e.name === tag) ?? { id: 1, name: 'ANDROID' })
 }
 
-const getStatus = (taskStatus: Status): StatusSelect => {
-	return status.find(e => e.name === taskStatus) ?? { id: 1, name: 'BACKLOG' }
+const getStatus = (taskStatus: Status): StatusSelect | null => {
+	return status.find(e => e.name === taskStatus) ?? null
+}
+
+const getPointStimate = (taskPoint: PointEstimate): PointEstimateSelect | null => {
+	return point.find(e => e.name === taskPoint) ?? null
 }

@@ -30,6 +30,9 @@ export const CardBody = ({ task }: Props) => {
 				</div>
 				<CardDueDate dueDate={task.dueDate} />
 			</div>
+			<div>
+				{task.pointEstimate} Points
+			</div>
 			<div className='flex gap-4'>
 				{
 					task.tags.map(tag => (

@@ -14,14 +14,12 @@ interface Props {
 }
 const INITIAL_VALUES: TaskFormValues = {
 	name: '',
-	tags: [
-		{ id: 1, name: 'ANDROID' },
-	],
-	status: { id: 1, name: 'BACKLOG' },
-	pointEstimate: '',
+	tags: [],
+	status: null,
+	pointEstimate: null,
 	dueDate: getDateTime().today,
 	dueTime: getDateTime().displayTime,
-	assigneeId: ''
+	assigneeId: null
 }
 export const CreateTaskForm = ({ onClose }: Props) => {
 

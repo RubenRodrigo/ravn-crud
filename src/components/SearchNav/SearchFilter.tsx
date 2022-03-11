@@ -8,49 +8,27 @@ import { getSearchQuery } from '../../helpers/query'
 
 const INITIAL_VALUES: TaskFormFilterValues = {
 	name: '',
-	tags: [
-		{ id: 1, name: 'ANDROID' },
-	],
-	status: { id: 1, name: 'BACKLOG' },
-	pointEstimate: '',
+	tags: [],
+	status: null,
+	pointEstimate: null,
 	dueDate: '',
 	dueTime: '',
-	assigneeId: '',
-	creatorId: ''
+	assigneeId: null,
+	creatorId: null
 }
 
 export const SearchFilter = () => {
-	// const { taskLoad } = useContext(TaskContext)
 	const navigate = useNavigate();
 
 	const searchTasksAction = (taskFormValues: SearchTask) => {
 		navigate({
 			search: getSearchQuery(taskFormValues).toString()
 		})
-		// setLoading(true)
-		// try {
-		// 	const res = await searchTask(getSearchQuery(taskFormValues))
-		// 	if (res.status === 200) {
-		// 		setLoading(false)
-		// 		const data = res.data
-		// 		console.log(data);
-		// 		// taskLoad(data)
-		// 		toast.custom(
-		// 			<ToastContent status="success" msg="Task were filtered." />
-		// 		)
-		// 	}
-
-		// } catch (error) {
-		// 	console.log(error);
-		// 	toast.custom(
-		// 		<ToastContent status="error" msg="We can\'t load the tasks." />
-		// 	)
-		// }
 	}
 	return (
 		<>
 			<Modal
-				className="bg-neutral-700"
+				className="bg-neutral-3"
 				openButton={(open) =>
 					<button className="self-center" onClick={open}>
 						<MdFilterAlt />

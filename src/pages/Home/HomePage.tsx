@@ -9,10 +9,10 @@ const INITIAL_STATE: TaskState = {
 			id: "1241",
 			name: "Slack",
 			tags: ['IOS', 'ANDROID'],
-			status: "Working",
+			status: "BACKLOG",
 			position: 1,
 			dueDate: new Date('2022-03-16T04:47:19.889Z'),
-			pointEstimate: "0",
+			pointEstimate: '0',
 			createdAt: new Date('2022-03-08T16:04:47.453Z')
 		}
 

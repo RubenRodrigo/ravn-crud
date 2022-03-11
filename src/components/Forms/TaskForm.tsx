@@ -1,13 +1,14 @@
 
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import { status, tags } from '../../helpers/data'
+import { point, status, tags } from '../../helpers/data'
 
 import { Tags, TaskBase, TaskFormValues } from '../../interfaces/Task'
 import { Spinner } from '../Spinner/Spinner'
-import { MultiSelectField } from './MultiSelectField'
-import { SelectField } from './SelectField'
-import { TextField } from './TextField'
+import { UserSelect } from './CustomFields/UserSelect'
+import { MultiSelectField } from './Fields/MultiSelectField'
+import { SelectField } from './Fields/SelectField'
+import { TextField } from './Fields/TextField'
 
 
 interface Props {
@@ -29,53 +30,68 @@ export const TaskForm = ({ saveTask, loading, INITIAL_VALUES }: Props) => {
 					.of(
 						Yup.object().shape({
 							id: Yup.number()
-								.notOneOf([0], 'No puede estar vacio')
+								.notOneOf([0], 'Cannot be empty')
 								.required('Required'),
 						})
 					),
 				status: Yup.object()
+					.required('Choose one')
 					.shape({
 						id: Yup.number()
-							.notOneOf([0], 'No puede estar vacio')
+							.notOneOf([0], 'Cannot be empty')
 							.required('Required')
-					}),
-				pointEstimate: Yup.number()
-					.oneOf([0, 1, 2, 4, 8], 'Only can be 0-1-2-4-8')
-					.required('Required'),
-				assigneeId: Yup.string()
-					.required('Required'),
+					})
+					.nullable(),
+				pointEstimate: Yup.object()
+					.required('Choose one')
+					.shape({
+						id: Yup.number()
+							.notOneOf([0], 'Cannot be empty')
+							.required('Required')
+					})
+					.nullable(),
+				assigneeId: Yup.object()
+					.required('Choose one')
+					.shape({
+						id: Yup.string()
+							.required('Required')
+					})
+					.nullable(),
 			})}
 			onSubmit={(values) => {
 				const datetime = new Date(`${values.dueDate}T${values.dueTime}`)
 				const tagsValues = values.tags.map(tag => tag.name) as Tags[]
 				const { dueTime, ...newValues } = values
-				saveTask({ ...newValues, tags: tagsValues, status: newValues.status.name, dueDate: datetime })
+				console.log(values);
+				saveTask({
+					...newValues,
+					tags: tagsValues,
+					status: newValues.status?.name ?? 'CANCELLED',
+					pointEstimate: newValues.pointEstimate?.name ?? '0',
+					assigneeId: newValues.assigneeId?.id,
+					dueDate: datetime
+				})
 			}}
 		>
 			{
 				(forms) => (
 					<Form autoComplete='off'>
-						<div className="text-white p-6">
+						<div className="text-white p-4">
 							{
 								loading &&
 								<div className='absolute w-full top-0 left-0 bottom-0 right-0 bg-primary bg-opacity-50'>
 									<Spinner wd={20} hg={20} />
 								</div>
 							}
-							<h3
-								className="text-2xl font-bold leading-6 mb-4"
-							>
-								Create new task
-							</h3>
-							<div className="mt-2">
-								<TextField
-									label='Name'
-									name="name"
-									placeholder="Task name"
-								/>
+							<TextField
+								name="name"
+								placeholder="Task title"
+							/>
+							<div className='flex gap-2'>
 								<MultiSelectField
 									label='Tags'
 									name="tags"
+									placeholder="Tags"
 									getOptionLabel={(option: any) => option.name}
 									getOptionValue={(option: any) => option.id}
 									options={tags}
@@ -83,15 +99,21 @@ export const TaskForm = ({ saveTask, loading, INITIAL_VALUES }: Props) => {
 								<SelectField
 									label='Status'
 									name="status"
+									placeholder="Status"
 									getOptionLabel={(option: any) => option.name}
 									getOptionValue={(option: any) => option.id}
 									options={status}
 								/>
-								<TextField
-									label='Point Estimated'
+								<SelectField
+									label='Estimated'
 									name="pointEstimate"
-									placeholder="Points"
+									placeholder="Estimated"
+									getOptionLabel={(option: any) => option.name.toString()}
+									getOptionValue={(option: any) => option.id}
+									options={point}
 								/>
+							</div>
+							<div className='flex gap-2'>
 								<TextField
 									label='Due Date'
 									name="dueDate"
@@ -104,16 +126,18 @@ export const TaskForm = ({ saveTask, loading, INITIAL_VALUES }: Props) => {
 									type='time'
 									placeholder="Due time. Opcional"
 								/>
-								<TextField
-									label='Assigned to'
-									name="assigneeId"
-									placeholder="Select"
-								/>
 							</div>
+							<UserSelect
+								label='Assigned to'
+								name="assigneeId"
+								placeholder="Assigned to"
+								getOptionLabel={(option: any) => option.fullName}
+								getOptionValue={(option: any) => option.id}
+							/>
 							<div className="mt-4">
 								<button
 									type="submit"
-									className="p-2 ripple__secondary rounded-lg"
+									className="p-2 bg-primary-4 text-neutral-1 rounded-lg"
 								>
 									Save Task
 								</button>
@@ -122,6 +146,6 @@ export const TaskForm = ({ saveTask, loading, INITIAL_VALUES }: Props) => {
 					</Form>
 				)
 			}
-		</Formik>
+		</Formik >
 	)
 }

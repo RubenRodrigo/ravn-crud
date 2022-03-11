@@ -8,7 +8,7 @@ interface Props {
 
 export const ListTaskItem = ({ task }: Props) => {
 	return (
-		<div className='w-full flex gap-4 p-4 hover:bg-neutral-600 hover:cursor-pointer'>
+		<div className='w-full flex gap-4 p-4 hover:bg-neutral-3 hover:cursor-pointer'>
 			<div className='flex-initial self-center'>
 				<img
 					className="rounded-full h-10 w-10 object-cover"

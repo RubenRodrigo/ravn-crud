@@ -1,4 +1,4 @@
-import { StatusSelect, TagsSelect } from "../interfaces/Selects"
+import { PointEstimateSelect, StatusSelect, TagsSelect } from "../interfaces/Selects"
 import { User } from "../interfaces/User"
 
 export const tags: TagsSelect[] = [
@@ -15,6 +15,16 @@ export const status: StatusSelect[] = [
 	{ id: 3, name: 'IN_PROGRESS' },
 	{ id: 4, name: 'CANCELLED' },
 ]
+
+
+export const point: PointEstimateSelect[] = [
+	{ id: 1, name: '0' },
+	{ id: 2, name: '1' },
+	{ id: 3, name: '2' },
+	{ id: 4, name: '4' },
+	{ id: 5, name: '8' },
+]
+
 
 export const INITIAL_USER_STATE: User = {
 	id: "a73d0174-339b-4b9b-ba48-cbe72086b909",

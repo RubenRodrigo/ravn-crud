@@ -13,6 +13,7 @@ interface Props {
 	children?: (props: ChildrenProps) => JSX.Element;
 	openButton?: (open: OpenModal) => JSX.Element;
 	className?: string;
+	containerClassName?: string;
 	OnIsOpen?: boolean
 	onCloseModal?: () => void
 	onOpenModal?: () => void
@@ -38,7 +39,7 @@ export const Modal = ({ children, openButton, className, OnIsOpen, onCloseModal,
 					className="fixed inset-0 z-30 overflow-y-auto"
 					onClose={closeModal}
 				>
-					<div className="min-h-screen px-4 text-center bg-black bg-opacity-70">
+					<div className="min-h-screen px-4 text-center bg-neutral-4 bg-opacity-10">
 						<Transition.Child
 							as={Fragment}
 							enter="ease-out duration-300"
@@ -67,7 +68,7 @@ export const Modal = ({ children, openButton, className, OnIsOpen, onCloseModal,
 							leaveFrom="opacity-100 scale-100"
 							leaveTo="opacity-0 scale-95"
 						>
-							<div className={`inline-block w-full max-w-lg my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl rounded-lg ${className}`}>
+							<div className={`inline-block w-full max-w-xl my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl rounded-lg ${className}`}>
 								{children &&
 									children({
 										onOpen: openModal,

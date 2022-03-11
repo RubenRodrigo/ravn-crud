@@ -20,7 +20,7 @@ export const HeaderTasks = ({ addTask }: Props) => {
 			</div>
 			<div>
 				<Modal
-					className="bg-neutral-700"
+					className="bg-neutral-3"
 					openButton={(open) =>
 						<button
 							onClick={open}
