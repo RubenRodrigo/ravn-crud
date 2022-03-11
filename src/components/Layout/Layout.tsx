@@ -8,6 +8,8 @@ import { SideBar } from "./SideBar";
 import toast, { Toaster } from 'react-hot-toast';
 import { ToastContent } from "../Toast/ToastContent";
 
+
+// Provider - UserContext. Share the UserState in the whole application
 const { Provider } = UserContext
 
 const INITIAL_USER_STATE: User = {

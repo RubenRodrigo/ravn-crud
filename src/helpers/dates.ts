@@ -40,3 +40,15 @@ export const getDateTime = (dateTime?: Date) => {
 	}
 
 }
+
+export const isValidDate = (datetime: Date) => {
+	if (Object.prototype.toString.call(datetime)
+		=== "[object Date]") {
+		if (isNaN(datetime.getTime())) {
+			return false
+		}
+		else {
+			return true
+		}
+	}
+}
