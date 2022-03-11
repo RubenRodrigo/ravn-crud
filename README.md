@@ -38,6 +38,7 @@ In every task we have an three-point button that we can use to display the avail
 
 
 ## App working
+The deployed version can be found at https://ravn-crud.vercel.app/ 
 #### Board Dashboard
 ![image info](./documents/board.png)
 #### List Dashboard
