@@ -15,7 +15,7 @@ export const HomePageContainer = () => {
 	const [searchParams] = useSearchParams();
 	const { taskLoad } = useContext(TaskContext)
 
-	const [taskLayout, setTaskLayout] = useState<TasksLayout>('l')
+	const [taskLayout, setTaskLayout] = useState<TasksLayout>('b')
 	const [error, setError] = useState<string>()
 	const [loading, setLoading] = useState<boolean>(false)
 

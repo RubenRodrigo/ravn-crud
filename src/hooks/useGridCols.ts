@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react"
 
+/**
+ * This hook is not being used
+ */
 export const useGridCols = (columns: number) => {
 	const gridContainerRef = useRef<HTMLDivElement>(null)
 	useEffect(() => {
