@@ -7,20 +7,12 @@ import { SideBar } from "./SideBar";
 
 import toast, { Toaster } from 'react-hot-toast';
 import { ToastContent } from "../Toast/ToastContent";
+import { INITIAL_USER_STATE } from "../../helpers/data";
 
 
 // Provider - UserContext. Share the UserState in the whole application
 const { Provider } = UserContext
 
-const INITIAL_USER_STATE: User = {
-	id: "a73d0174-339b-4b9b-ba48-cbe72086b909",
-	fullName: "Ruben Rodrigo Chañi Laura",
-	email: "rodrigohde905@gmail.com",
-	type: "CANDIDATE",
-	avatar: null,
-	createdAt: new Date('2022-03-08T16:04:47.41'),
-	updatedAt: new Date('2022-03-09T00:26:12.743Z'),
-}
 
 interface Props {
 	children?: JSX.Element | JSX.Element[];

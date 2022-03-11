@@ -2,7 +2,6 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { HomePage } from '../pages/Home/HomePage'
 import { SettingsPage } from '../pages/SettingsPage'
-import { TaskPage } from '../pages/TaskPage'
 
 import { Layout } from '../components/Layout'
 
@@ -14,7 +13,6 @@ export const DashboardRouter = () => {
 				<div className='bg-neutral-800 lg:p-6 p-2 lg:rounded-3xl h-full'>
 					<Layout>
 						<Routes>
-							<Route path="tasks/:taskId" element={<TaskPage />} />
 							<Route path='tasks' element={<HomePage />} />
 							<Route path='settings' element={<SettingsPage />} />
 							<Route path='/' element={<HomePage />} />
