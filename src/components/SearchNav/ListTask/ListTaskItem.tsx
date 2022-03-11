@@ -1,6 +1,6 @@
-import { Task } from '../../interfaces/Task'
+import { Task } from '../../../interfaces/Task'
 
-import profile from '../../assets/images/profile.jpg'
+import profile from '../../../assets/images/profile.jpg'
 
 interface Props {
 	task: Task

@@ -1,5 +1,5 @@
 import { MdClose, MdDashboard, MdReorder, MdSettings } from "react-icons/md";
-import { ListLink } from "../ListLink/ListLink";
+import { ListLink } from "./ListLink/ListLink";
 
 import { ReactComponent as Logo } from '../../assets/svg/black.svg'
 import { NavLink } from "react-router-dom";

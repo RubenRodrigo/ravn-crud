@@ -30,8 +30,6 @@ export const TaskProvider = ({ children, INITIAL_STATE }: Props) => {
 		dispatch({ type: 'taskDelete', payload: id })
 	}
 
-	console.log('PROVIDER RENDER');
-
 	return (
 		<Provider
 			value={{

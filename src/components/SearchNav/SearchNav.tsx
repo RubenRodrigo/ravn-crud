@@ -5,7 +5,7 @@ import { getSearchQuery } from "../../helpers/query";
 import { useDebounce } from "../../hooks/useDebounce";
 import { Task } from "../../interfaces/Task";
 import { searchTask } from "../../services/task";
-import { ListTaskItem } from "../ListTask/ListTaskItem";
+import { ListTaskItem } from "./ListTask/ListTaskItem";
 import { SearchNavSkeleton } from "../Skeleton/SearchNavSkeleton";
 import { SearchFilter } from "./SearchFilter";
 

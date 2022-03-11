@@ -1,0 +1,1 @@
+export type TasksLayout = 'b' | 'l'
