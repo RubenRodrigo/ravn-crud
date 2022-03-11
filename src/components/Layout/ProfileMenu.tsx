@@ -16,11 +16,11 @@ export const ProfileMenu = ({ profileIMG }: Props) => {
 					{profileIMG}
 				</div>
 				<div className='flex-1 self-center'>
-					<p className='text-sm'>{user.fullName}</p>
+					<p className='text-sm text-neutral-1'>{user.fullName}</p>
 					<NavLink to='/settings'>
 						<Menu.Item>
 							{({ active }) => (
-								<p className='text-sm text-secondary'>
+								<p className='text-sm text-neutral-2'>
 									Manage your account.
 								</p>
 							)}

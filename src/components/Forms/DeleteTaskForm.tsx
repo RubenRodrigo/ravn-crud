@@ -33,10 +33,10 @@ export const DeleteTaskForm = ({ onClose, id }: Props) => {
 		}
 	}
 	return (
-		<div className="text-white relative p-6 ">
+		<div className="text-neutral-1 relative p-6 ">
 			{
 				loading &&
-				<div className='absolute w-full top-0 left-0 bottom-0 right-0 bg-primary bg-opacity-50'>
+				<div className='absolute w-full top-0 left-0 bottom-0 right-0 bg-neutral-3 bg-opacity-50'>
 					<Spinner wd={20} hg={20} />
 				</div>
 			}
@@ -50,7 +50,7 @@ export const DeleteTaskForm = ({ onClose, id }: Props) => {
 				<div className="py-2 ">
 					<button
 						onClick={onClose}
-						className="p-2 bg-green-600 bg-opacity-20 hover:bg-opacity-10 border-2 border-green-900 rounded-lg w-full"
+						className="p-2 bg-secondary-4 bg-opacity-20 hover:bg-opacity-10 border-2 border-secondary-4 rounded-lg w-full"
 					>
 						Cancel
 					</button>
@@ -58,7 +58,7 @@ export const DeleteTaskForm = ({ onClose, id }: Props) => {
 				<div className="py-2">
 					<button
 						onClick={() => deleteTaskAction()}
-						className="p-2 bg-red-600 bg-opacity-20 hover:bg-opacity-10 border-2 border-red-900 rounded-lg w-full"
+						className="p-2 bg-primary-4 bg-opacity-20 hover:bg-opacity-10 border-2 border-primary-4 rounded-lg w-full"
 					>
 						Delete Task
 					</button>

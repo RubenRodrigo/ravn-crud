@@ -15,7 +15,7 @@ export const ListLink = ({ name, to, icon }: Props) => {
 			<div
 				className={
 					`lg:px-6 py-3 px-2 border-transparent lg:border-r-4 
-					${match && 'lg:border-r-secondary link__active text-secondary'} `
+					${match && 'lg:border-r-primary-4 link__active text-primary-4'} `
 				}
 			>
 				<div className="w-full flex gap-3 uppercase lg:justify-self-auto justify-center">

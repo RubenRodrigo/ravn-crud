@@ -41,7 +41,7 @@ export const SearchNav = () => {
 
 	return (
 		<>
-			<div className="flex-1 flex gap-4">
+			<div className="flex-1 flex gap-4 ">
 				<div className="flex-initial self-center">
 					<MdSearch />
 				</div>
@@ -58,7 +58,7 @@ export const SearchNav = () => {
 					<SearchFilter />
 				</div>
 			</div>
-			<div className="absolute bg-primary w-full left-0 right-0 top-16 rounded-lg z-20 max-h-72 overflow-y-auto">
+			<div className="absolute bg-neutral-4 w-full left-0 right-0 top-16 rounded-lg z-20 max-h-72 overflow-y-auto">
 				{isSearching &&
 					<div className="px-6 p-2">
 						<SearchNavSkeleton />
