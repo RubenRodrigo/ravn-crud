@@ -12,7 +12,7 @@ interface ChildrenProps {
 interface Props {
 	children?: (props: ChildrenProps) => JSX.Element;
 	openButton?: (open: OpenModal) => JSX.Element;
-	className: string;
+	className?: string;
 	OnIsOpen?: boolean
 	onCloseModal?: () => void
 	onOpenModal?: () => void

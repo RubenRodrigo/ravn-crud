@@ -1,6 +1,8 @@
 import { StatusSelect, TagsSelect } from "./Selects";
 import { User } from "./User";
 
+export type Tags = "ANDROID" | "IOS" | "NODE_JS" | "RAILS" | "REACT"
+export type Status = "BACKLOG" | "TODO" | "IN_PROGRESS" | "CANCELLED"
 export interface TaskBase {
 	name: string;
 	tags: Tags[];
@@ -18,9 +20,6 @@ export interface Task extends TaskBase {
 	createdAt: Date;
 }
 
-export type Tags = "ANDROID" | "IOS" | "NODE_JS" | "RAILS" | "REACT"
-export type Status = "BACKLOG" | "TODO" | "IN_PROGRESS" | "CANCELLED"
-
 export interface TaskFormValues {
 	name: string;
 	tags: TagsSelect[];
@@ -29,4 +28,17 @@ export interface TaskFormValues {
 	dueDate: string;
 	dueTime: string;
 	assigneeId: string;
+}
+
+export interface TaskFormFilterValues extends TaskFormValues {
+	creatorId: string;
+}
+
+export interface SearchTask {
+	name?: string;
+	assigneeId?: string;
+	creatorId?: string;
+	tags?: Tags[];
+	status?: Status | '';
+	dueDate?: string;
 }

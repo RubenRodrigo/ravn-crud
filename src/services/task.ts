@@ -6,6 +6,12 @@ export const getTask = async () => {
 	return await axiosInstance().get('/tasks')
 }
 
+export const searchTask = async (query: URLSearchParams) => {
+	return await axiosInstance().get(
+		`/tasks?${query}`
+	)
+}
+
 interface CreateTaskProps {
 	task: TaskBase
 }

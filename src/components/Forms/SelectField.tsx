@@ -24,6 +24,7 @@ export const SelectField = ({ label, ...props }: Props) => {
 				{label}
 			</label>
 			<Select
+				isClearable={true}
 				onChange={handleChange}
 				styles={selectStyles}
 				{...props}

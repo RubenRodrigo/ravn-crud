@@ -7,7 +7,7 @@ import { ProfileMenu } from "./ProfileMenu"
 export const NavBar = () => {
 
 	return (
-		<div className='py-2 px-6 rounded-xl bg-primary mb-4 flex text-neutral-400 text-xl gap-4'>
+		<div className='py-2 px-6 rounded-xl bg-primary mb-4 flex text-neutral-400 text-xl gap-4 relative w-full'>
 			<SearchNav />
 			<div className="flex-initial self-center text-2xl flex gap-5">
 				<div className="self-center">

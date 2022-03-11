@@ -1,26 +1,28 @@
 import { useCallback, useContext, useEffect, useState } from "react"
 import toast from 'react-hot-toast';
 
-import { getTask } from "../../services/task"
+import { searchTask } from "../../services/task"
 import { BoardContainer } from "../../components/Board/BoardContainer"
 import { HeaderTasks } from "../../components/HeaderTasks/HeaderTasks"
 import { ToastContent } from "../../components/Toast/ToastContent";
 import { TaskContext } from "../../context/TaskContext";
+import { useSearchParams } from "react-router-dom";
 
 export const HomePageContainer = () => {
 
+	const [searchParams] = useSearchParams();
 	const { taskLoad } = useContext(TaskContext)
 	const [error, setError] = useState<string>()
 	const [loading, setLoading] = useState<boolean>(false)
 
-
-	const getData = useCallback(async () => {
+	const getData = useCallback(async (searchParams: URLSearchParams) => {
 		setLoading(true)
 		try {
-			const res = await getTask()
+			const res = await searchTask(searchParams)
 			const data = res.data
 			taskLoad(data)
 		} catch (error) {
+			console.log(error);
 			setError('We can\'t load the tasks.')
 			toast.custom(
 				<ToastContent status="error" msg="We can\'t load the tasks." />
@@ -31,8 +33,9 @@ export const HomePageContainer = () => {
 	}, [taskLoad])
 
 	useEffect(() => {
-		getData()
-	}, [])
+		console.log(searchParams);
+		getData(searchParams)
+	}, [searchParams])
 
 	return (
 		<div className="text-white h-full flex flex-col w-full ">
