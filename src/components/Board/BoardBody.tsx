@@ -14,11 +14,12 @@ export const BoardBody = ({ statusTasks, statusTaskKeys }: Props) => {
 	const gridContainerRef = useGridCols(statusTaskKeys.length)
 	return (
 		<div
-			className={`grid gap-4 h-full grid-flow-col w-full`}
+			className={`grid gap-4 h-full grid-flow-col justify-between overflow-x-scroll`}
 			ref={gridContainerRef}
 		>
 			{statusTaskKeys.map(key => (
-				<div key={key} className="col-span-1">
+				<div key={key} className="col-span-1 bg-neutral-5">
+					<h1 className="flex-1 self-center font-semibold text-xl">{key} ({statusTasks[key].length})</h1>
 					{statusTasks[key].map((task, index) => (
 						<Card
 							key={task.id}

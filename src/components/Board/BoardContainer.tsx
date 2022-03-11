@@ -25,10 +25,9 @@ export const BoardContainer = ({ loading }: Props) => {
 				?
 				<Spinner />
 				:
-				<>
-					<BoardHeader statusTaskKeys={Object.keys(statusTasks)} statusTasks={statusTasks} />
+				<div>
 					<BoardBody statusTaskKeys={Object.keys(statusTasks)} statusTasks={statusTasks} />
-				</>
+				</div>
 			}
 		</>
 	)

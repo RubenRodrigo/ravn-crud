@@ -19,6 +19,7 @@ interface Props {
 }
 export const Layout = ({ children }: Props) => {
 	const [user, setUser] = useState<User>(INITIAL_USER_STATE)
+	const [isMenuActive, setIsMenuActive] = useState(false)
 
 	const getData = async () => {
 		try {
@@ -37,15 +38,21 @@ export const Layout = ({ children }: Props) => {
 	}, [])
 
 
+	const handleMenu = () => {
+		setIsMenuActive((prev) => !prev)
+	}
+
 	return (
 		<Provider
-			value={{ user: user }}
+			value={{
+				user: user,
+				isMenuActive,
+				handleMenu,
+			}}
 		>
 			<div className="w-full h-full flex gap-8">
-				<div className="flex-initial lg:w-64 h-full overflow-y-auto">
-					<SideBar />
-				</div>
-				<div className="flex-1 h-full flex flex-col">
+				<SideBar />
+				<div className="lg:w-10/12 w-full h-full flex flex-col">
 					<div className="w-full flex-initial">
 						<NavBar />
 					</div>
@@ -57,6 +64,6 @@ export const Layout = ({ children }: Props) => {
 			<Toaster
 				position="bottom-right"
 			/>
-		</Provider>
+		</Provider >
 	)
 }
