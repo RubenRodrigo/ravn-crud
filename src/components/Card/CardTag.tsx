@@ -2,7 +2,7 @@ import { Tags } from "../../interfaces/Task"
 
 
 interface CardTagProps {
-	tag: Tags
+	tag: Tags | string
 }
 
 export const CardTag = ({ tag }: CardTagProps) => {

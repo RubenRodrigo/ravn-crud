@@ -28,7 +28,6 @@ export const MultiSelectField = ({ label, ...props }: Props) => {
 				{...props}
 				{...field}
 			/>
-
 			<ErrorMessage name={props.name} component="span" className="text-secondary" />
 		</div >
 	)

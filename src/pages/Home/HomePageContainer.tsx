@@ -6,12 +6,16 @@ import { BoardContainer } from "../../components/Board/BoardContainer"
 import { HeaderTasks } from "../../components/HeaderTasks/HeaderTasks"
 import { ToastContent } from "../../components/Toast/ToastContent";
 import { TaskContext } from "../../context/TaskContext";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { MdArrowBack } from "react-icons/md";
+import { TasksLayout } from "../../interfaces/Layout";
 
 export const HomePageContainer = () => {
-
+	const navigate = useNavigate()
 	const [searchParams] = useSearchParams();
 	const { taskLoad } = useContext(TaskContext)
+
+	const [taskLayout, setTaskLayout] = useState<TasksLayout>('l')
 	const [error, setError] = useState<string>()
 	const [loading, setLoading] = useState<boolean>(false)
 
@@ -33,21 +37,41 @@ export const HomePageContainer = () => {
 	}, [taskLoad])
 
 	useEffect(() => {
-		console.log(searchParams);
 		getData(searchParams)
 	}, [searchParams])
 
+	const handleTasksLayout = (layout: TasksLayout) => {
+		setTaskLayout(layout)
+	}
+
 	return (
-		<div className="text-neutral-1 h-full flex flex-col w-full ">
-			<HeaderTasks />
-			<div className="flex-1">
-				{error
+		<>
+			{
+				searchParams.toString().length > 0
 					?
-					<div>Something went wrong. Maybe is an 500 server error.</div>
+					<button
+						onClick={() => navigate('/')}
+						className="bg-neutral-3 rounded-lg px-2 py-1 text-neutral-1"
+					>
+						<MdArrowBack className="w-6 h-6" />
+					</button>
 					:
-					<BoardContainer loading={loading} />
-				}
+					<></>
+			}
+			<div className="text-neutral-1 h-full flex flex-col w-full ">
+				<HeaderTasks
+					taskLayout={taskLayout}
+					handleTasksLayout={handleTasksLayout}
+				/>
+				<div className="flex-1">
+					{error
+						?
+						<div>Something went wrong. Maybe is an 500 server error.</div>
+						:
+						<BoardContainer loading={loading} taskLayout={taskLayout} />
+					}
+				</div>
 			</div>
-		</div>
+		</>
 	)
 }
