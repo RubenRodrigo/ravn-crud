@@ -1,4 +1,4 @@
-import { MdAllInbox, MdDashboard, MdEditCalendar, MdReorder, MdSettings } from "react-icons/md";
+import { MdAllInbox, MdDashboard, MdReorder, MdSettings } from "react-icons/md";
 import { ListLink } from "../ListLink/ListLink";
 
 export const SideBar = () => {
@@ -15,12 +15,6 @@ export const SideBar = () => {
 				</li>
 				<li className="my-2">
 					<ListLink to="/tasks" name="My Tasks" icon={<MdReorder />} />
-				</li>
-				<li className="my-2">
-					<ListLink to="/" name="Calendar" icon={<MdEditCalendar />} />
-				</li>
-				<li className="my-2">
-					<ListLink to="/reports" name="Reports" icon={<MdAllInbox />} />
 				</li>
 				<li className="my-2">
 					<ListLink to="/settings" name="Settings" icon={<MdSettings />} />

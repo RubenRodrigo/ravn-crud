@@ -1,3 +1,4 @@
+import { Menu } from '@headlessui/react';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
@@ -17,9 +18,13 @@ export const ProfileMenu = ({ profileIMG }: Props) => {
 				<div className='flex-1 self-center'>
 					<p className='text-sm'>{user.fullName}</p>
 					<NavLink to='/settings'>
-						<p className='text-sm text-secondary'>
-							Manage your account.
-						</p>
+						<Menu.Item>
+							{({ active }) => (
+								<p className='text-sm text-secondary'>
+									Manage your account.
+								</p>
+							)}
+						</Menu.Item>
 					</NavLink>
 				</div>
 			</div>

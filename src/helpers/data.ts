@@ -1,4 +1,5 @@
 import { StatusSelect, TagsSelect } from "../interfaces/Selects"
+import { User } from "../interfaces/User"
 
 export const tags: TagsSelect[] = [
 	{ id: 1, name: 'ANDROID' },
@@ -15,3 +16,12 @@ export const status: StatusSelect[] = [
 	{ id: 4, name: 'CANCELLED' },
 ]
 
+export const INITIAL_USER_STATE: User = {
+	id: "a73d0174-339b-4b9b-ba48-cbe72086b909",
+	fullName: "Ruben Rodrigo Chañi Laura",
+	email: "rodrigohde905@gmail.com",
+	type: "CANDIDATE",
+	avatar: null,
+	createdAt: new Date('2022-03-08T16:04:47.41'),
+	updatedAt: new Date('2022-03-09T00:26:12.743Z'),
+}
