@@ -38,7 +38,7 @@ export const CardHead = ({ task }: Props) => {
 			<CustomMenu
 				width='w-36'
 				menuButton={
-					<ActionButton />
+					<ActionButton className='text-neutral-2' />
 				}
 			>
 				<CardMenu task={task} openEdit={openModalEdit} openDelete={openModalDelete} />

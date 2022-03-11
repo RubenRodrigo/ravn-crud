@@ -13,12 +13,11 @@ export const BoardHeader = ({ statusTaskKeys, statusTasks }: Props) => {
 	return (
 		<div
 			ref={gridContainerRef}
-			className={`grid gap-4 grid-flow-col sticky top-0 bg-neutral-800 py-2 z-10 w-full`}
+			className={`grid gap-4 grid-flow-col sticky top-0 bg-neutral-5 py-2 z-10 w-full`}
 		>
 			{statusTaskKeys.map(key =>
 				<div key={key} className="col-span-1 flex">
 					<h1 className="flex-1 self-center font-semibold text-xl">{key} ({statusTasks[key].length})</h1>
-					<ActionButton className="text-gray-500" />
 				</div>
 			)}
 		</div>

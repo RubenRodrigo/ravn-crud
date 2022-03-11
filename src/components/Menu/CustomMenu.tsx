@@ -26,7 +26,7 @@ export const CustomMenu = ({ menuButton, children, width = 'w-64' }: Props) => {
 			>
 				<Menu.Items
 					static
-					className={`absolute right-0 ${width} mt-8 p-1 origin-top-right bg-neutral-700 text-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20`}
+					className={`absolute right-0 ${width} mt-8 p-1 origin-top-right bg-neutral-3 text-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20`}
 				>
 					{children}
 				</Menu.Items>

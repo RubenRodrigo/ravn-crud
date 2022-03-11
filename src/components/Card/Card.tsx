@@ -11,7 +11,7 @@ interface Props {
 
 export const Card = ({ task, imageURL }: Props) => {
 	return (
-		<div className='my-4 bg-primary p-4 rounded-lg'>
+		<div className='my-4 bg-neutral-4 p-4 rounded-lg'>
 			<div className='flex flex-col gap-5'>
 				{imageURL && <CardImage imageURL={imageURL} name={task.name} />}
 				<CardHead task={task} />

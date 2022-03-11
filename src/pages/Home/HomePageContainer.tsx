@@ -38,7 +38,7 @@ export const HomePageContainer = () => {
 	}, [searchParams])
 
 	return (
-		<div className="text-white h-full flex flex-col w-full ">
+		<div className="text-neutral-1 h-full flex flex-col w-full ">
 			<HeaderTasks />
 			<div className="flex-1">
 				{error

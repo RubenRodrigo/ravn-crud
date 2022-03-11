@@ -9,8 +9,8 @@ export const DashboardRouter = () => {
 	return (
 		<>
 			{/* Layout */}
-			<main className='bg-neutral-700 lg:p-8 p-0 h-screen w-full'>
-				<div className='bg-neutral-800 lg:p-6 p-2 lg:rounded-3xl h-full'>
+			<main className='bg-neutral-5 lg:p-8 p-0 h-screen w-full'>
+				<div className='lg:p-6 p-2 lg:rounded-3xl h-full'>
 					<Layout>
 						<Routes>
 							<Route path='tasks' element={<HomePage />} />
